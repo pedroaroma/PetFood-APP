@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image } from 'react-native'
 import SplashScreen from 'react-native-splash-screen'
+import api from '../services/api'
 
 import GeneralStatusBarColor from '../components/GeneralStatusBarColor'
 
@@ -13,6 +14,8 @@ export default class Login extends Component {
 
 	login = () => {
 		//logica de login aqui com a API
+		//alert(`${this.state.email}` + ' '+ `${this.state.password}`)
+		
 	}
 
 	componentDidMount() {
@@ -20,7 +23,6 @@ export default class Login extends Component {
 	}
 
 	render() {
-
 		return (
 			<View style={styles.container} >
 				<GeneralStatusBarColor backgrondColor="#29568F" barStyle="light-content" />
@@ -28,7 +30,7 @@ export default class Login extends Component {
 					style={styles.logo}
 					source={require('../images/logo.png')} />
 				<TextInput placeholder='Email' style={styles.input}
-					autoFocus={true} keyboardType='email-address'
+					autoFocus={false} keyboardType='email-address'
 					value={this.state.email}
 					onChangeText={email => this.setState({ email })} />
 
@@ -40,7 +42,7 @@ export default class Login extends Component {
 					<Text style={styles.buttomText}>Login</Text>
 				</TouchableOpacity>
 
-				<TouchableOpacity onPress={() => {}} style={styles.buttom}>
+				<TouchableOpacity onPress={() => this.login} style={styles.buttom}>
 					<Text style={styles.buttomText}>Criar Nova Conta</Text>
 				</TouchableOpacity>
 				

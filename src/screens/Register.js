@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native'
+import {View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView } from 'react-native'
 import GeneralStatusBarColor from '../components/GeneralStatusBarColor'
 import SplashScreen from 'react-native-splash-screen' //retirar depois que resolver a navegação
 
@@ -17,16 +17,19 @@ class Register extends Component {
         cidade: '', //ok
         bairro: '', //ok
         complemento: '', //ok
-        telefone: '' //
+        telefone: '', //ok
+        dataNascimento: '' //ok
     }
-    componentDidMount() { //retirar depois para resolver a navegação
-		SplashScreen.hide();
+    componentDidMount(e) { //retirar depois para resolver a navegação
+        SplashScreen.hide();
 	}
 
     render() {
       return (
           <View style={styles.container}>
               <GeneralStatusBarColor backgrondColor="#29568F" barStyle="light-content" />
+
+                <ScrollView>
 
                 <TextInput placeholder='Nome' style={styles.input}
                     autoFocus={true} value={this.state.nome}
@@ -65,7 +68,13 @@ class Register extends Component {
                 
                 <TextInput placeholder='Telefone' style={styles.input} value={this.state.telefone}
                     onChangeText={telefone => this.setState({ telefone })} />
-                <TouchableOpacity onPress={()=> {}} style={styles.buttom}>
+
+                <TextInput placeholder='Data de Nascimento' style={styles.input} value={this.state.dataNascimento}
+                    onChangeText={dataNascimento => this.setState({ dataNascimento })} /> 
+
+            </ScrollView>
+            
+                <TouchableOpacity onPress={()=> alert('todo')} style={styles.buttom}>
                     <Text style={styles.buttomText}>Cadastrar</Text>
                 </TouchableOpacity>
 
