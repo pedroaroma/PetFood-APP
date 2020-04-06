@@ -13,6 +13,7 @@ export default class Login extends Component {
 	}
 
 	login = () => {
+		//aplicar logica para verifica campos vazios
 		//logica de login aqui com a API
 		//alert(`${this.state.email}` + ' '+ `${this.state.password}`)
 		api.post(`/auth/login?email=${this.state.email}&senha=${this.state.password}`)
@@ -46,10 +47,10 @@ export default class Login extends Component {
 					onChangeText={password => this.setState({ password })} />
 				
 				<TouchableOpacity onPress={this.login} style={styles.buttom}>
-					<Text style={styles.buttomText}>Login</Text>
+					<Text style={styles.buttomText}>          Login           </Text>
 				</TouchableOpacity>
 
-				<TouchableOpacity onPress={() => this.login} style={styles.buttom}>
+				<TouchableOpacity onPress={() => {}} style={styles.buttom}>
 					<Text style={styles.buttomText}>Criar Nova Conta</Text>
 				</TouchableOpacity>
 				
@@ -69,11 +70,10 @@ const styles = StyleSheet.create({
 	logo: {
 		flex: 1,
 		resizeMode: 'center',
-		marginBottom: 5
 	},
 
 	buttom: {
-		marginTop: 5,
+
 		marginBottom: 10,
 		padding: 10,
 		backgroundColor: '#B3C2F2',
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
 	},
 
 	input: {
-		marginTop: 10,
+		marginBottom: 5,
 		width: '90%',
 		backgroundColor: '#B3C2F2',
 		height: 40,

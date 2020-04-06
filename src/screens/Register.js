@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import {View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView } from 'react-native'
+import {View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, Dimensions } from 'react-native'
 import GeneralStatusBarColor from '../components/GeneralStatusBarColor'
 import SplashScreen from 'react-native-splash-screen' //retirar depois que resolver a navegação
+import api from '../services/api'
 
 class Register extends Component {
 
@@ -22,7 +23,31 @@ class Register extends Component {
     }
     componentDidMount(e) { //retirar depois para resolver a navegação
         SplashScreen.hide();
-	}
+    }
+
+    register = () => {
+
+        api.post(`/auth/register?nome=name
+        &email=${this.state.email}
+        &senha=${this.state.password}
+        &cpf=${this.state.cpf}
+        &cep=${this.state.cep}
+        &rua=${this.state.rua}
+        &numero=${this.state.numero}
+        &estado=${this.state.estado}
+        &cidade=${this.state.cidade}
+        &bairro=${this.state.bairro}
+        &complemento=${this.state.complemento}
+        &telefone=${this.state.telefone}
+        &dataNascimento=${this.state.dataNascimento}`)
+        .then( response => {
+            alert("Cadastro Bem Sucedido")
+        })
+        .catch(function(error){
+            alert(error)
+        })
+    }
+    
 
     render() {
       return (
@@ -32,8 +57,8 @@ class Register extends Component {
                 <ScrollView>
 
                 <TextInput placeholder='Nome' style={styles.input}
-                    autoFocus={true} value={this.state.nome}
-                    onChangeText={name => this.setState({ nome })} />
+                    autoFocus={false} value={this.state.nome}
+                    onChangeText={name => this.setState({ name })} />
 
                 <TextInput placeholder='Email' style={styles.input}
                     keyboardType='email-address' value={this.state.email}
@@ -55,7 +80,7 @@ class Register extends Component {
                     onChangeText={numero => this.setState({ numero })} />
 
                 <TextInput placeholder='Estado' style={styles.input} value={this.state.estado}
-                    onChangeText={cpf => this.setState({ estado })} />
+                    onChangeText={estado => this.setState({ estado })} />
 
                 <TextInput placeholder='Cidade' style={styles.input} value={this.state.cidade}
                     onChangeText={cidade => this.setState({ cidade })} />
@@ -74,7 +99,7 @@ class Register extends Component {
 
             </ScrollView>
             
-                <TouchableOpacity onPress={()=> alert('todo')} style={styles.buttom}>
+                <TouchableOpacity onPress={this.register} style={styles.buttom}>
                     <Text style={styles.buttomText}>Cadastrar</Text>
                 </TouchableOpacity>
 
@@ -82,16 +107,19 @@ class Register extends Component {
       )
     };
 }
+
 const styles = StyleSheet.create({
 
     container: {
 		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center',
+        justifyContent: 'space-between',
 		backgroundColor: '#29568F',	
 	},
 	buttom: {
-		marginTop: 5,
+        marginLeft: Math.round(Dimensions.get('window').width) / 2.75,
+        width: 110,
+        height: 50,
+        marginTop: 5,
 		marginBottom: 10,
 		padding: 10,
 		backgroundColor: '#B3C2F2',
@@ -106,6 +134,7 @@ const styles = StyleSheet.create({
 	},
 
 	input: {
+        marginLeft: 10,
 		marginTop: 10,
 		width: '90%',
 		backgroundColor: '#B3C2F2',
