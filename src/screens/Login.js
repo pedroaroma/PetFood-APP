@@ -17,6 +17,10 @@ export default class Login extends Component {
 		api.post(`/auth/login?email=${this.state.email}&senha=${this.state.password}`)
 			.then( response => {
 				alert("Login Bem Sucedido")
+				this.props.navigation.navigate('Home')
+				this.setState({email: ''})
+				this.setState({password: ''})
+				
 			})
 			.catch(function(error){
 				alert("usuário não encontrado")

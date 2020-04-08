@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, Dimensions } from 'react-native'
 import GeneralStatusBarColor from '../components/GeneralStatusBarColor'
-import SplashScreen from 'react-native-splash-screen' //retirar depois que resolver a navegação
 import api from '../services/api'
 
 class Register extends Component {
@@ -21,9 +20,6 @@ class Register extends Component {
         telefone: '', //ok
         dataNascimento: '' //ok
     }
-    componentDidMount() { //retirar depois para resolver a navegação
-        SplashScreen.hide();
-    }
 
     register = () => {
 
@@ -42,6 +38,7 @@ class Register extends Component {
         &dataNascimento=${this.state.dataNascimento}`)
         .then( response => {
             alert("Cadastro Bem Sucedido")
+            this.props.navigation.navigate('Login')
         })
         .catch(function(error){
             alert(error)

@@ -3,7 +3,7 @@
  */
 
 import {AppRegistry} from 'react-native';
-import LoginScreen from './src/screens/Home';
+import LoginScreen from './src/screens/Initial';
 import {name as appName} from './app.json';
 
 
