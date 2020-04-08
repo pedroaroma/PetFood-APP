@@ -13,9 +13,7 @@ export default class Login extends Component {
 	}
 
 	login = () => {
-		//aplicar logica para verifica campos vazios
-		//logica de login aqui com a API
-		//alert(`${this.state.email}` + ' '+ `${this.state.password}`)
+        
 		api.post(`/auth/login?email=${this.state.email}&senha=${this.state.password}`)
 			.then( response => {
 				alert("Login Bem Sucedido")
@@ -50,7 +48,7 @@ export default class Login extends Component {
 					<Text style={styles.buttomText}>          Login           </Text>
 				</TouchableOpacity>
 
-				<TouchableOpacity onPress={() => {}} style={styles.buttom}>
+				<TouchableOpacity onPress={() => this.props.navigation.navigate('Register')} style={styles.buttom}>
 					<Text style={styles.buttomText}>Criar Nova Conta</Text>
 				</TouchableOpacity>
 				

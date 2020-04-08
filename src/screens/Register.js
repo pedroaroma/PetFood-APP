@@ -21,7 +21,7 @@ class Register extends Component {
         telefone: '', //ok
         dataNascimento: '' //ok
     }
-    componentDidMount(e) { //retirar depois para resolver a navegação
+    componentDidMount() { //retirar depois para resolver a navegação
         SplashScreen.hide();
     }
 
@@ -65,6 +65,7 @@ class Register extends Component {
                     onChangeText={email => this.setState({email})} />
 
                 <TextInput placeholder='Senha' style={styles.input} value={this.state.password}
+                    secureTextEntry={true}
                     onChangeText={password => this.setState({ password })} />
 
                 <TextInput placeholder='CPF' style={styles.input} value={this.state.cpf}
@@ -101,6 +102,10 @@ class Register extends Component {
             
                 <TouchableOpacity onPress={this.register} style={styles.buttom}>
                     <Text style={styles.buttomText}>Cadastrar</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => this.props.navigation.goBack()} style={styles.buttom}>
+                    <Text style={styles.buttomText}>Retornar</Text>
                 </TouchableOpacity>
 
           </View>
