@@ -34,6 +34,7 @@ export default class Login extends Component {
 
 	render() {
 		//<TouchableOpacity onPress={this.login} style={styles.buttom}>
+		//APENAS TESTE QUANDO A API ESTIVER OFF
 		return (
 			<View style={styles.container} >
 				<GeneralStatusBarColor backgrondColor="#29568F" barStyle="light-content" />
