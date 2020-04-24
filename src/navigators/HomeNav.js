@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image } from 'react-native'
 import GeneralStatusBarColor from '../components/GeneralStatusBarColor'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 import Home from'../screens/Home'
 import Search from '../screens/Search'
 import Orders from '../screens/Orders'
 import Profile from '../screens/Profile'
-import { NavigationContainer } from '@react-navigation/native'
+
 
 
 
@@ -18,17 +19,22 @@ function MyTabs() {
         <Tab.Navigator
         initialRouteName = "Inicio"
         tabBarOptions={{
-            inactiveTintColor: '#91A8A4',
+            inactiveTintColor: 'black',
             activeTintColor: '#F0F7EE',
             inactiveBackgroundColor: '#B3C2F2',
-            activeBackgroundColor: '#C4D7F2'
+            activeBackgroundColor: '#C4D7F2',
+            style: {
+                borderTopColor: 'black',
+                borderTopWidth: 2,
+            }
         }}
         >
             <Tab.Screen
             name = "Inicio"
             component = {Home}
             options = {{
-                tabBarLabel: 'Início'
+                tabBarLabel: 'Início',
+                tabBarIcon: () => <Icon name= 'home' size={30} color = "black" />
             }}
             />
 
@@ -36,7 +42,8 @@ function MyTabs() {
             name = "Busca"
             component = {Search}
             options = {{ 
-                tabBarLabel: 'Busca'
+                tabBarLabel: 'Busca',
+                tabBarIcon: () => <Icon name= 'search' size={30} color = "black" />
             }}
             />
 
@@ -44,7 +51,8 @@ function MyTabs() {
             name = "Pedido"
             component = {Orders}
             options = {{
-                tabBarLabel: 'Pedido'
+                tabBarLabel: 'Pedidos',
+                tabBarIcon: () => <Icon name= 'shopping-cart' size={30} color = "black" />
             }}
             />
 
@@ -52,7 +60,8 @@ function MyTabs() {
             name = "Perfil"
             component = {Profile}
             options = {{
-                tabBarLabel: 'Perfil'
+                tabBarLabel: 'Perfil',
+                tabBarIcon: () => <Icon name= 'user' size={30} color = "black" />
             }}
             />
 
