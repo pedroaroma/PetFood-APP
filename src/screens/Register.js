@@ -102,7 +102,7 @@ class Register extends Component {
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => this.props.navigation.goBack()} style={styles.buttom}>
-                    <Text style={styles.buttomText}>Retornar</Text>
+                    <Text style={styles.buttomText}> Retornar</Text>
                 </TouchableOpacity>
 
           </View>

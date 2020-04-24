@@ -5,9 +5,9 @@ import SplashScreen from 'react-native-splash-screen'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Login from './Login'
-import Register from './Register'
-import Home from './Home'
+import Login from '../screens/Login'
+import Register from '../screens/Register'
+import HomeNav from './HomeNav'
 
 
 const Stack = createStackNavigator()
@@ -32,7 +32,7 @@ function MyStack() {
 			
 			<Stack.Screen
 				name="Home"
-				component={Home}
+				component={HomeNav}
 			/>
 
 		</Stack.Navigator>
