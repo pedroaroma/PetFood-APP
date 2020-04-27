@@ -149,8 +149,8 @@ const styles = StyleSheet.create({
 		width: 190,
 		height: 50,
 		alignSelf: 'center',
-		marginBottom: 40,
-		marginTop: 10,
+		marginBottom: 10,
+		marginTop: 15,
 
 	},
 	buttomText: {
