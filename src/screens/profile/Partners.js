@@ -24,44 +24,44 @@ export default class Partners extends Component{
 					</View>
 					<View>
 						<Text style={styles.inputText}>Nome da Loja</Text>
-						<TextInput style={styles.input} placeholder="Qual é o nome da Loja?"
+						<TextInput style={styles.input} placeholder="Qual é o nome da Loja?" placeholderTextColor="#fff"
 						secureTextEntry={false}
 						/>
 					</View>
 					<View>
 						<Text style={styles.inputText}>CNPJ</Text>
-						<TextInput style={styles.input} placeholder="qual é o CNPJ do estabelecimento?"
+						<TextInput style={styles.input} placeholder="qual é o CNPJ do estabelecimento?" placeholderTextColor="#fff"
 						secureTextEntry={false}
 						/>
 					</View>
 					<View>
 						<Text style={styles.inputText}>Telefone Comercial (com DDD)</Text>
-						<TextInput style={styles.input} placeholder="qual é o tel. comercial do estabelecimento?"
+						<TextInput style={styles.input} placeholder="qual é o tel. comercial do estabelecimento?" placeholderTextColor="#fff"
 						secureTextEntry={false}
 						/>
 					</View>
 					<View>
 						<Text style={styles.inputText}>CEP</Text>
-						<TextInput style={styles.input} placeholder="qual é o CEP do estabelecimento?"
+						<TextInput style={styles.input} placeholder="qual é o CEP do estabelecimento?" placeholderTextColor="#fff"
 						secureTextEntry={false}
 						/>
 					</View>
 					<View>
 						<Text style={styles.inputText}>Endereço</Text>
-						<TextInput style={styles.input} placeholder="fornecdo pela api"
+						<TextInput style={styles.input} placeholder="fornecdo pela api" placeholderTextColor="#fff"
 						secureTextEntry={false}
 						/>
 					</View>
 					<View style={styles.NumComp}>
 					<View>
 						<Text style={styles.inputText}>Número</Text>
-						<TextInput style={styles.input} placeholder="N°"
+						<TextInput style={styles.input} placeholder="N°" placeholderTextColor="#fff"
 						secureTextEntry={false}
 						/>
 					</View>
 					<View>
 						<Text style={styles.inputText}>Complemento</Text>
-						<TextInput style={styles.input} placeholder="Ex: Casa 1, apto 22, bloco 2              "
+						<TextInput style={styles.input} placeholder="Ex: Casa 1, apto 22, bloco 2              " placeholderTextColor="#fff"
 						secureTextEntry={false}
 						/>
 					</View>
