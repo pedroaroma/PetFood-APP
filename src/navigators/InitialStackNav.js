@@ -7,7 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Login from '../screens/Login'
 import Register from '../screens/Register'
-import HomeNav from './HomeNav'
+import HomeTabNav from './HomeTabNav'
 
 
 const Stack = createStackNavigator()
@@ -32,14 +32,14 @@ function MyStack() {
 			
 			<Stack.Screen
 				name="Home"
-				component={HomeNav}
+				component={HomeTabNav}
 			/>
 
 		</Stack.Navigator>
 	)
 }
 
-export default class LoginScreen extends Component {
+export default class InitialStackNav extends Component {
 	
 	componentDidMount() { 
         SplashScreen.hide();

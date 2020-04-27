@@ -6,7 +6,7 @@ export default class Orders extends Component{
     render(){
         return(
             <View>
-                <GeneralStatusBarColor backgrondColor="#29568F" barStyle="light-content" />
+                <GeneralStatusBarColor backgrondColor="#B3C2F2" barStyle="light-content" />
                 <Text>Tela de Pedidos</Text>
             </View>
         )

@@ -3,8 +3,8 @@
  */
 
 import {AppRegistry} from 'react-native';
-import LoginScreen from './src/navigators/InitialNav';
+import InitialStackNav from './src/navigators/InitialStackNav';
 import {name as appName} from './app.json';
 
 
-AppRegistry.registerComponent(appName, () => LoginScreen);
+AppRegistry.registerComponent(appName, () => InitialStackNav);

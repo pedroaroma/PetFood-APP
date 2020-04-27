@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image } from 'react-native'
+import { View, Text } from 'react-native'
 import GeneralStatusBarColor from '../components/GeneralStatusBarColor'
 
 export default class Profile extends Component{
     render(){
         return(
             <View>
-                <GeneralStatusBarColor backgrondColor="#29568F" barStyle="light-content" />
+                <GeneralStatusBarColor backgrondColor="#B3C2F2" barStyle="light-content" />
                 <Text>Tela de Perfil</Text>
             </View>
         )
