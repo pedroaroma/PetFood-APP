@@ -23,25 +23,30 @@ class Register extends Component {
 
     register = () => {
 
-        api.post(`/auth/register?nome=name
-        &email=${this.state.email}
-        &senha=${this.state.password}
-        &cpf=${this.state.cpf}
-        &cep=${this.state.cep}
-        &rua=${this.state.rua}
-        &numero=${this.state.numero}
-        &estado=${this.state.estado}
-        &cidade=${this.state.cidade}
-        &bairro=${this.state.bairro}
-        &complemento=${this.state.complemento}
-        &telefone=${this.state.telefone}
-        &dataNascimento=${this.state.dataNascimento}`)
+        console.debug(this.state)
+
+        api.post('/auth/register',{
+            nome: this.state.name,
+            email: this.state.email,
+            senha: this.state.password,
+            cpf: this.state.cpf,
+            cep: this.state.cep,
+            rua: this.state.rua,
+            numero: this.state.numero,
+            estado: this.state.estado,
+            cidade: this.state.cidade,
+            bairro: this.state.bairro,
+            complemento: this.state.complemento,
+            telefone: this.state.telefone,
+            dataNascimento: this.state.dataNascimento
+        })
         .then( response => {
             alert("Cadastro Bem Sucedido")
             this.props.navigation.navigate('Login')
         })
         .catch(function(error){
-            alert(error)
+            console.debug(error.response)
+            alert(error.response)
         })
     }
     

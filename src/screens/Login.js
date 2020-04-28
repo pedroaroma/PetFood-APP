@@ -7,6 +7,12 @@ import GeneralStatusBarColor from '../components/GeneralStatusBarColor'
 
 export default class Login extends Component {
 
+	constructor(){
+		super();
+
+		global.Token = ''
+	}
+
 	state = {
 		email: '',
 		password: ''
@@ -14,8 +20,13 @@ export default class Login extends Component {
 
 	login = () => {
         
-		api.post(`/auth/login?email=${this.state.email}&senha=${this.state.password}`)
+		api.post('/auth/login',{
+			email: this.state.email,
+			senha: this.state.password
+		})
 			.then( response => {
+				global.Token = response.data.token
+				//console.debug(response.data.token)
 				alert("Login Bem Sucedido")
 				this.props.navigation.navigate('Home')
 				this.setState({email: ''})
@@ -34,6 +45,7 @@ export default class Login extends Component {
 
 	render() {
 		//<TouchableOpacity onPress={this.login} style={styles.buttom}>
+		//<TouchableOpacity onPress={() => this.props.navigation.navigate('Home')} style={styles.buttom}>
 		//APENAS TESTE QUANDO A API ESTIVER OFF
 		return (
 			<View style={styles.container} >
@@ -50,7 +62,7 @@ export default class Login extends Component {
 					secureTextEntry={true} value={this.state.password}
 					onChangeText={password => this.setState({ password })} />
 				
-				<TouchableOpacity onPress={() => this.props.navigation.navigate('Home')} style={styles.buttom}>
+				<TouchableOpacity onPress={this.login} style={styles.buttom}>
 					<Text style={styles.buttomText}>          Login           </Text>
 				</TouchableOpacity>
 

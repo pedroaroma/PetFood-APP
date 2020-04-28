@@ -8,6 +8,7 @@ export default class Home extends Component{
             <View>
                 <GeneralStatusBarColor backgrondColor="#B3C2F2" barStyle="light-content" />
                 <Text>Tela inicial do app</Text>
+                <Text>{global.Token}</Text>
             </View>
         )
     }

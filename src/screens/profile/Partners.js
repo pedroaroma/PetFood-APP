@@ -5,6 +5,19 @@ import Icon5 from 'react-native-vector-icons/FontAwesome5';
 import { ScrollView } from 'react-native-gesture-handler';
 
 export default class Partners extends Component {
+
+	state = {
+
+		nomeLoja: '',
+		cnpj: '',
+		telComercial: '',
+		cep: '',
+		endereco: '',
+		numero: '',
+		Complemento: '',
+		
+	}
+
 	render() {
 		return (
 			<View style={styles.container}>
@@ -23,7 +36,7 @@ export default class Partners extends Component {
 					<View style={styles.Form}>
 						<View style={styles.Inside}>
 							<Text style={styles.TextFormTitle}>Cadastre sua loja</Text>
-							<Text style={styles.TextFormSub}>Pensa em expandir suas negócios? Seja nosso parceiro e aumente suas vendas!</Text>
+							<Text style={styles.TextFormSub}>Pensa em expandir seus negócios? Seja nosso parceiro e aumente suas vendas!</Text>
 						</View>
 						<View>
 							<Text style={styles.inputText}>Nome da Loja</Text>
