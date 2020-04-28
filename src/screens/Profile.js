@@ -13,7 +13,7 @@ export default class Profile extends Component{
 
             <View style={styles.Nome}>
                 <Icon5 name='user-circle' size={30} color='black' />
-                <Text style={styles.tamFonteNome}>Nome Usuário</Text>
+                <Text style={styles.tamFonteNome}>{global.nomeUsuario}</Text>
             </View>
 
         <View style = {styles.Buttons}>

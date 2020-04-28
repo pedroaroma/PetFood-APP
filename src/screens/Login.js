@@ -10,7 +10,8 @@ export default class Login extends Component {
 	constructor(){
 		super();
 
-		global.Token = ''
+		global.Token = '',
+		global.nomeUsuario = ''
 	}
 
 	state = {
@@ -26,6 +27,7 @@ export default class Login extends Component {
 		})
 			.then( response => {
 				global.Token = response.data.token
+				global.nomeUsuario = response.data.clientData.nome
 				//console.debug(response.data.token)
 				alert("Login Bem Sucedido")
 				this.props.navigation.navigate('Home')
