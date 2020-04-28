@@ -66,38 +66,49 @@ class Register extends Component {
                     keyboardType='email-address' value={this.state.email}
                     onChangeText={email => this.setState({email})} />
 
-                <TextInput placeholder='Senha' style={styles.input} value={this.state.password}
+                <TextInput placeholder='Senha' style={styles.input} 
+                    value={this.state.password}
                     secureTextEntry={true}
                     onChangeText={password => this.setState({ password })} />
 
-                <TextInput placeholder='CPF' style={styles.input} value={this.state.cpf}
+                <TextInput placeholder='CPF' style={styles.input}
+                    value={this.state.cpf}
                     onChangeText={cpf => this.setState({ cpf })} />
 
-                <TextInput placeholder='CEP' style={styles.input} value={this.state.cep}
+                <TextInput placeholder='CEP' style={styles.input}
+                    value={this.state.cep}
                     onChangeText={cep => this.setState({ cep })} />
 
-                <TextInput placeholder='Rua' style={styles.input} value={this.state.rua}
+                <TextInput placeholder='Rua' style={styles.input}
+                    value={this.state.rua}
                     onChangeText={rua => this.setState({ rua })} />
 
-                <TextInput placeholder='Número' style={styles.input} value={this.state.numero}
+                <TextInput placeholder='Número' style={styles.input}
+                    value={this.state.numero}
                     onChangeText={numero => this.setState({ numero })} />
 
-                <TextInput placeholder='Estado' style={styles.input} value={this.state.estado}
+                <TextInput placeholder='Estado' style={styles.input}
+                    value={this.state.estado}
                     onChangeText={estado => this.setState({ estado })} />
 
-                <TextInput placeholder='Cidade' style={styles.input} value={this.state.cidade}
+                <TextInput placeholder='Cidade' style={styles.input}
+                    value={this.state.cidade}
                     onChangeText={cidade => this.setState({ cidade })} />
 
-                <TextInput placeholder='Bairro' style={styles.input} value={this.state.bairro}
+                <TextInput placeholder='Bairro' style={styles.input}
+                    value={this.state.bairro}
                     onChangeText={bairro => this.setState({ bairro })} />
 
-                <TextInput placeholder='Complemento' style={styles.input} value={this.state.complemento}
+                <TextInput placeholder='Complemento' style={styles.input}
+                    value={this.state.complemento}
                     onChangeText={complemento => this.setState({ complemento })} />
                 
-                <TextInput placeholder='Telefone' style={styles.input} value={this.state.telefone}
+                <TextInput placeholder='Telefone' style={styles.input}
+                    value={this.state.telefone}
                     onChangeText={telefone => this.setState({ telefone })} />
 
-                <TextInput placeholder='Data de Nascimento' style={styles.input} value={this.state.dataNascimento}
+                <TextInput placeholder='Data de Nascimento' style={styles.input}
+                    value={this.state.dataNascimento}
                     onChangeText={dataNascimento => this.setState({ dataNascimento })} /> 
 
             </ScrollView>
