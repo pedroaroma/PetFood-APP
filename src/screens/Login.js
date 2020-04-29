@@ -11,7 +11,8 @@ export default class Login extends Component {
 		super();
 
 		global.Token = '',
-		global.nomeUsuario = ''
+		global.nomeUsuario = '',
+		global.isPartner = false
 	}
 
 	state = {
@@ -28,8 +29,12 @@ export default class Login extends Component {
 			.then( response => {
 				global.Token = response.data.token
 				global.nomeUsuario = response.data.clientData.nome
-				//console.debug(response.data.token)
+				if(response.data.clientData.tipo === "loja"){
+					global.isPartner = true
+				}
+				console.debug(response.data.clientData.tipo)
 				alert("Login Bem Sucedido")
+
 				this.props.navigation.navigate('Home')
 				this.setState({email: ''})
 				this.setState({password: ''})
