@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-nativ
 import GeneralStatusBarColor from '../../components/GeneralStatusBarColor'
 import Icon5 from 'react-native-vector-icons/FontAwesome5';
 import { ScrollView } from 'react-native-gesture-handler';
+import RNRestart from 'react-native-restart'
 
 import api from '../../services/api'
 
@@ -39,9 +40,9 @@ export default class Partners extends Component {
 			}
 		})
 			.then( response => {
-				alert("Loja cadastrada com sucesso")
+				alert("Loja cadastrada com sucesso, por favor faça Login novamente")
 				console.debug(response.data)
-				this.props.navigation.goBack()
+				RNRestart.Restart()
 			})
 			.catch(function(error){
 				alert("ops, algo deu errado")

@@ -58,6 +58,8 @@ target 'petfoodApp' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'react-native-restart', :path => '../node_modules/react-native-restart'
+
   target 'petfoodAppTests' do
     inherit! :complete
     # Pods for testing
