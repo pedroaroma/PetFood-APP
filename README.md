@@ -1,4 +1,7 @@
 # PetFood-APP
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c6d8d6427f0b4b46a42eafb31f9f266f)](https://app.codacy.com/manual/pedroaroma/PetFood-APP?utm_source=github.com&utm_medium=referral&utm_content=pedroaroma/PetFood-APP&utm_campaign=Badge_Grade_Settings)
+
 Aplicativo para encomendas de produtos para Pets
 
 Instalação
