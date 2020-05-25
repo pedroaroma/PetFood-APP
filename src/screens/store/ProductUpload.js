@@ -11,7 +11,7 @@ export default class ProductUpload extends Component {
 
     state = {
 
-        lojaId: '',
+        lojaId: global.idLoja,
         nomeProduto: '',
         preco: '',
         codBarras: '',
@@ -37,6 +37,8 @@ export default class ProductUpload extends Component {
             .then(response => {
                 alert("Produto cadastrado com sucesso")
                 console.debug(response.data)
+                this.props.navigation.goBack()
+
             })
             .catch(function (error) {
                 alert("ops, algo deu errado")

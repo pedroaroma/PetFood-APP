@@ -111,12 +111,12 @@ const styles = StyleSheet.create({
     },
     voltarbotao:{
         alignItems: 'center',
-        marginTop: 60,
-        marginLeft: Math.round(Dimensions.get('window').width) / 2.8,
+        marginTop: 90,
+        marginLeft: Math.round(Dimensions.get('window').width) / 2.7,
         justifyContent: 'center',
         backgroundColor: '#F0F7EE',
         borderRadius: 360,
-        width: 100,
-        height: 100,
+        width: 80,
+        height: 80,
     }
 })

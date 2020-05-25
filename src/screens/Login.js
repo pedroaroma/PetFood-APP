@@ -12,6 +12,7 @@ export default class Login extends Component {
 
 		global.Token = '',
 		global.nomeUsuario = '',
+		global.idLoja = '',
 		global.isPartner = false
 	}
 
@@ -31,6 +32,7 @@ export default class Login extends Component {
 				global.nomeUsuario = response.data.clientData.nome
 				if(response.data.clientData.tipo === "loja"){
 					global.isPartner = true
+					global.idLoja = response.data.clientData.loja
 				}
 				console.debug(response.data.clientData.tipo)
 				alert("Login Bem Sucedido")
@@ -69,7 +71,7 @@ export default class Login extends Component {
 					secureTextEntry={true} value={this.state.password}
 					onChangeText={password => this.setState({ password })} />
 				
-				<TouchableOpacity onPress={() => this.props.navigation.navigate('Home')} style={styles.buttom}>
+				<TouchableOpacity onPress={this.login} style={styles.buttom}>
 					<Text style={styles.buttomText}>          Login           </Text>
 				</TouchableOpacity>
 

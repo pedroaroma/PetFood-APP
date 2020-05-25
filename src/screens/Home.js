@@ -12,6 +12,7 @@ export default class Home extends Component {
                     <Text>Tela apenas para Debug</Text>
                     <Text>{global.isPartner ? 'Tipo de Login: Loja' : 'cliente'}</Text>
                     <Text>{'Token do usuário: ' + (global.Token == '' ? 'Modo offline = sem token' : global.Token)}</Text>
+                    <Text>{'ID da Loja: ' + global.idLoja }</Text>
                 </View>
             </View>
         )
