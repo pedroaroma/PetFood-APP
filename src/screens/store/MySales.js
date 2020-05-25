@@ -6,12 +6,17 @@ export default class MySales extends Component {
 
     render(){
         return(
-            <View>
+            <View style={styles.container}>
                 <GeneralStatusBarColor backgrondColor="#B3C2F2" barStyle="light-content" />
                 <Text>Pagina de minhas vendas</Text>
             </View>
         )
     }
-
-
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#B3C2F2'
+    },
+})

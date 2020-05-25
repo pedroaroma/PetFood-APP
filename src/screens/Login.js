@@ -12,7 +12,7 @@ export default class Login extends Component {
 
 		global.Token = '',
 		global.nomeUsuario = '',
-		global.isPartner = true
+		global.isPartner = false
 	}
 
 	state = {

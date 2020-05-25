@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import GeneralStatusBarColor from '../../components/GeneralStatusBarColor'
 
 export default class EditProfile extends Component {
 	render() {
 		return (
-			<View>
+			<View style={styles.container}>
 				<GeneralStatusBarColor backgrondColor="#B3C2F2" barStyle="light-content" />
 				<Text>PAgina de editar perfil</Text>
 				<View>
@@ -17,3 +17,10 @@ export default class EditProfile extends Component {
 		)
 	}
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#B3C2F2'
+    },
+})

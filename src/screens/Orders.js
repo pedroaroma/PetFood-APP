@@ -5,10 +5,17 @@ import GeneralStatusBarColor from '../components/GeneralStatusBarColor'
 export default class Orders extends Component{
     render(){
         return(
-            <View>
+            <View style={styles.container}>
                 <GeneralStatusBarColor backgrondColor="#B3C2F2" barStyle="light-content" />
                 <Text>Tela de Pedidos</Text>
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#B3C2F2'
+    },
+})
