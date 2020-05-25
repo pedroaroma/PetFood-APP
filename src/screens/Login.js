@@ -12,7 +12,7 @@ export default class Login extends Component {
 
 		global.Token = '',
 		global.nomeUsuario = '',
-		global.isPartner = false
+		global.isPartner = true
 	}
 
 	state = {
@@ -69,7 +69,7 @@ export default class Login extends Component {
 					secureTextEntry={true} value={this.state.password}
 					onChangeText={password => this.setState({ password })} />
 				
-				<TouchableOpacity onPress={this.login} style={styles.buttom}>
+				<TouchableOpacity onPress={() => this.props.navigation.navigate('Home')} style={styles.buttom}>
 					<Text style={styles.buttomText}>          Login           </Text>
 				</TouchableOpacity>
 

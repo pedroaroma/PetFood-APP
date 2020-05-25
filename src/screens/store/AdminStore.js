@@ -9,7 +9,15 @@ export default class AdminStore extends Component   {
         return(
             <View>
                 <GeneralStatusBarColor backgrondColor="#B3C2F2" barStyle="light-content" />
-                <Text>Página de administração de Loja</Text>
+               
+                <Text>Nome da Loja</Text>
+
+                <TouchableOpacity onPress={ () => this.props.navigation.navigate('ProductUpload')}>
+                    <Text>Cadastrar produto</Text>
+                </TouchableOpacity>
+                
+                <Text>Minhas Vendas</Text>
+
             </View>
         )
     }

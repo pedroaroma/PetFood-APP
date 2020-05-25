@@ -22,6 +22,7 @@ import Partners from '../screens/profile/Partners'
 
 //Loja screens imports
 import AdminStore from '../screens/store/AdminStore'
+import ProductUpload from '../screens/store/ProductUpload'
 
 const Stack = createStackNavigator()
 
@@ -96,6 +97,11 @@ function MyStack() {
 			<Stack.Screen
 				name="AdminStore"
 				component={AdminStore}
+			/>
+
+			<Stack.Screen
+				name="ProductUpload"
+				component={ProductUpload}
 			/>
 
 		</Stack.Navigator>

@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, Dimensi
 import GeneralStatusBarColor from '../components/GeneralStatusBarColor'
 import api from '../services/api'
 
-class Register extends Component {
+export default class Register extends Component {
 
     state = {
         name: '', //ok
@@ -162,5 +162,5 @@ const styles = StyleSheet.create({
 	}
 })
 
-export default Register
+
 
