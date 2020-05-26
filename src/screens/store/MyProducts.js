@@ -47,11 +47,14 @@ export default class MyProducts extends Component {
                 <ScrollView>
                     {this.state.products.map(product => {
                         return (
+
                             <View key={product._id} style={styles.produto}>
-                                <Text style={styles.texto}>Nome: {product.nomeProduto}</Text>
-                                <Text style={styles.texto}>Preço: {product.preco} Reais</Text>
-                                <Text style={styles.texto}>Cód Barras: {product.codBarras}</Text>
-                                <Text style={styles.texto}>Descrição: {product.descricao}</Text>
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate('ProductEdit')}>
+                                    <Text style={styles.texto}>Nome: {product.nomeProduto}</Text>
+                                    <Text style={styles.texto}>Preço: {product.preco} Reais</Text>
+                                    <Text style={styles.texto}>Cód Barras: {product.codBarras}</Text>
+                                    <Text style={styles.texto}>Descrição: {product.descricao}</Text>
+                                </TouchableOpacity>
                             </View>
                         )
                     })}
@@ -82,6 +85,7 @@ const styles = StyleSheet.create({
     headerText: {
         fontSize: 26,
         marginBottom: -5,
+        alignSelf: 'center'
     },
     produto: {
         margin: 10,

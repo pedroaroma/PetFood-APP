@@ -25,6 +25,7 @@ import AdminStore from '../screens/store/AdminStore'
 import ProductUpload from '../screens/store/ProductUpload'
 import MyProducts from '../screens/store/MyProducts'
 import MySales from '../screens/store/MySales';
+import ProductEdit from '../screens/store/ProductEdit'
 
 const Stack = createStackNavigator()
 
@@ -114,6 +115,11 @@ function MyStack() {
 			<Stack.Screen
 				name="MySales"
 				component={MySales}
+			/> 
+
+			<Stack.Screen
+				name="ProductEdit"
+				component={ProductEdit}
 			/>  
 
 		</Stack.Navigator>

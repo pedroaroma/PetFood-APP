@@ -13,7 +13,9 @@ export default class Login extends Component {
 		global.Token = '',
 		global.nomeUsuario = '',
 		global.idLoja = '',
-		global.isPartner = false
+		global.endEntrega = '',
+		global.isPartner = false,
+		global.idProduct = ''
 	}
 
 	state = {
@@ -33,6 +35,7 @@ export default class Login extends Component {
 				if(response.data.clientData.tipo === "loja"){
 					global.isPartner = true
 					global.idLoja = response.data.clientData.loja
+					global.endEntrega = (response.data.clientData.rua + ', '+ response.data.clientData.numero)
 				}
 				console.debug(response.data.clientData.tipo)
 				alert("Login Bem Sucedido")
