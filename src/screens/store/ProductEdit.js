@@ -31,7 +31,8 @@ export default class ProductEdit extends Component {
 		codBarras: String(global.codBarras),
 		descricao: String(global.descricao),
 		tags: String(global.tags),
-		_id: global.itemId
+		_id: global.itemId,
+		delete: 0
 	}
 
 	productEditor = () => {
@@ -63,6 +64,25 @@ export default class ProductEdit extends Component {
 			
 	}
 
+	productDelete = () => {
+		if(this.state.delete === 0) {
+			alert("Clique de novo no botão para excluir este produto")
+			this.setState({delete: 1})
+		}
+		else{
+			api.delete(`/store/product/${this.state._id}`, {
+				headers: {
+					'Authorization': `Bearer ${global.Token}`,
+				}
+			}).then(response => {
+				alert("Produto Deletado com sucesso")
+				this.props.navigation.navigate('AdminStore')
+			}).catch(function (error){
+				alert("Não foi possivel Deletar o seu Produto")
+			})
+		}
+
+	}
 
 
 	render() {
@@ -145,6 +165,10 @@ export default class ProductEdit extends Component {
 
 						<TouchableOpacity onPress={() => this.props.navigation.goBack()} style={styles.botaoVoltar}>
 							<Text style={styles.voltarBotaoTexto}>Cancelar</Text>
+						</TouchableOpacity>
+
+						<TouchableOpacity onPress={this.productDelete} style={styles.botaoVoltar}>
+							<Text style={styles.voltarBotaoTexto}>Excluir Item</Text>
 						</TouchableOpacity>
 
 						<TouchableOpacity onPress={this.productEditor} style={styles.botaoVoltar}>
