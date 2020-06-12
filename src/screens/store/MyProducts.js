@@ -14,6 +14,11 @@ export default class MyProducts extends Component {
 
     }
 
+    /*
+    usuario.teste2@email.com.br
+    123456789
+*/
+
     componentDidMount() {
         this.getProducts()
     }
@@ -49,13 +54,23 @@ export default class MyProducts extends Component {
                         return (
 
                             <View key={product._id} style={styles.produto}>
-                                <TouchableOpacity onPress={() => this.props.navigation.navigate('ProductEdit')}>
+                                <TouchableOpacity onPress={() => {
+                                    this.props.navigation.navigate('ProductEdit')
+                                    global.nomeProduto = product.nomeProduto
+                                    global.preco = product.preco
+                                    global.codBarras = product.codBarras
+                                    global.descricao = product.descricao
+                                    global.tags = product.tags
+                                    global.itemId = product._id
+                                }}>
                                     <Text style={styles.texto}>Nome: {product.nomeProduto}</Text>
                                     <Text style={styles.texto}>Preço: {product.preco} Reais</Text>
                                     <Text style={styles.texto}>Cód Barras: {product.codBarras}</Text>
                                     <Text style={styles.texto}>Descrição: {product.descricao}</Text>
+                                    <Text style={styles.texto}>Tags: {product.tags}</Text>
                                 </TouchableOpacity>
                             </View>
+
                         )
                     })}
                 </ScrollView>
@@ -64,7 +79,7 @@ export default class MyProducts extends Component {
                     <Icon5 name="arrow-left" size={80} color="#91A8A4" style={styles.allignIcon} />
                 </TouchableOpacity>
 
-            </View>
+            </View >
         )
     }
 }
@@ -85,7 +100,6 @@ const styles = StyleSheet.create({
     headerText: {
         fontSize: 26,
         marginBottom: -5,
-        alignSelf: 'center'
     },
     produto: {
         margin: 10,

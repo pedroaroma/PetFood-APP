@@ -15,7 +15,17 @@ export default class Login extends Component {
 		global.idLoja = '',
 		global.endEntrega = '',
 		global.isPartner = false,
-		global.idProduct = ''
+
+		
+		global.nomeProduto = '',
+		global.preco = '',
+		global.codBarras = '',
+		global.descricao = '',
+		global.tags = '',
+		global.itemId = ''
+		
+
+
 	}
 
 	state = {
@@ -37,7 +47,7 @@ export default class Login extends Component {
 					global.idLoja = response.data.clientData.loja
 					global.endEntrega = (response.data.clientData.rua + ', '+ response.data.clientData.numero)
 				}
-				console.debug(response.data.clientData.tipo)
+				//console.debug(response.data.clientData.tipo)
 				alert("Login Bem Sucedido")
 
 				this.props.navigation.navigate('Home')

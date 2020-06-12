@@ -36,7 +36,7 @@ export default class ProductUpload extends Component {
         })
             .then(response => {
                 alert("Produto cadastrado com sucesso")
-                console.debug(response.data)
+                //console.debug(response.data)
                 this.props.navigation.goBack()
 
             })

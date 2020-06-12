@@ -3,279 +3,296 @@ import { View, Text, StyleSheet, TextInput, Dimensions } from 'react-native'
 import GeneralStatusBarColor from '../../components/GeneralStatusBarColor'
 
 import api from '../../services/api'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler'
 import Icon5 from 'react-native-vector-icons/FontAwesome5';
 
 
+/*
+		global.nomeProduto = '',
+		global.preco = '',
+		global.codBarras = '',
+		global.descricao = '',
+		global.tags = '',
+		global.itemId = ''
+
+		    usuario.teste2@email.com.br
+			123456789
+			
+			//GAMBIARRA COM VARIAVEIS GLOBAIS, PESQUISAR UM MÉTODO PARA PASSAR PARAMETROS ENTRE CLASSES COMPONENTES
+*/
+
 export default class ProductEdit extends Component {
 
+	state = {
 
-    state = {
+		lojaId: global.idLoja,
+		nomeProduto: global.nomeProduto,
+		preco: String(global.preco),
+		codBarras: String(global.codBarras),
+		descricao: String(global.descricao),
+		tags: String(global.tags),
+		_id: global.itemId
+	}
 
-        lojaId: global.idLoja,
-        nomeProduto: '',
-        preco: '',
-        codBarras: '',
-        descricao: '',
-        tags: '',
-    }
+	productEditor = () => {
 
-    productRegister = () => {
+		api.patch('/store/product', {
 
-        api.post('/store/product', {
+			lojaId: this.state.lojaId,
+			nomeProduto: this.state.nomeProduto,
+			preco: this.state.preco,
+			codBarras: this.state.codBarras,
+			descricao: this.state.descricao,
+			tags: this.state.tags,
+			_id: this.state._id
+		}, {
+			headers: {
+				'Authorization': `Bearer ${global.Token}`,
+			}
+		})
+			.then(response => {
+				alert("Produto Editado com sucesso")
+				//console.debug(response.data)
+				this.props.navigation.navigate('AdminStore')
 
-            lojaId: this.state.lojaId,
-            nomeProduto: this.state.nomeProduto,
-            preco: this.state.preco,
-            codBarras: this.state.codBarras,
-            descricao: this.state.descricao,
-            tags: this.state.tags
-        }, {
-            headers: {
-                'Authorization': `Bearer ${global.Token}`,
-            }
-        })
-            .then(response => {
-                alert("Produto cadastrado com sucesso")
-                console.debug(response.data)
-                this.props.navigation.goBack()
-
-            })
-            .catch(function (error) {
-                alert("ops, algo deu errado")
-                console.debug(error.response)
-            })
-
-    }
-
-
-
-    render() {
-        return (
-            <View style={styles.container}>
-
-                <GeneralStatusBarColor backgrondColor="#B3C2F2" barStyle="light-content" />
-
-                <Text style={styles.header}></Text>
-                <View style={styles.lineStyle}></View>
-
-                <Text style={styles.segHeader}>Informações Gerais</Text>
-                <View style={styles.lineStyle}></View>
-
-                <View style={styles.primBloco}>
-                    <View style={styles.primBlocoEsq}>
-                        <TouchableOpacity onPress={() => alert('Upload de foto')}>
-                            <Icon5 name="file-upload" size={128} color='#29568F' />
-                            <Text style={styles.foto}> Escolher foto</Text>
-                        </TouchableOpacity>
-                    </View>
+			})
+			.catch(function (error) {
+				alert("ops, algo deu errado")
+				console.debug(error.response)
+			})
+			
+	}
 
 
-                    <View style={styles.primBlocoDir}>
 
-                        <TextInput style={styles.textNomeProduto}
-                            placeholder="Nome do produto"
-                            value={this.state.nomeProduto}
-                            onChangeText={nomeProduto => this.setState({ nomeProduto })}
-                            placeholderTextColor="#B3C2F2"
-                        />
+	render() {
+		return (
+			<View style={styles.container}>
 
-                        <View style={styles.primBlocoSegLinha}>
+				<GeneralStatusBarColor backgrondColor="#B3C2F2" barStyle="light-content" />
 
-                            <TextInput style={styles.textPreco}
-                                placeholder="Preço"
-                                value={this.state.preco}
-                                onChangeText={preco => this.setState({ preco })}
-                                placeholderTextColor="#B3C2F2"
-                            />
+				<Text style={styles.header}>Editar Item</Text>
+				<View style={styles.lineStyle}></View>
+
+				<Text style={styles.segHeader}>Informações Gerais</Text>
+				<View style={styles.lineStyle}></View>
+				<ScrollView>
+					<View style={styles.primBloco}>
+						<View style={styles.primBlocoEsq}>
+							<TouchableOpacity onPress={() => alert('Upload de foto')}>
+								<Icon5 name="file-upload" size={128} color='#29568F' />
+								<Text style={styles.foto}> Escolher foto</Text>
+							</TouchableOpacity>
+						</View>
 
 
-                            <TextInput style={styles.button}
-                                placeholder="Cód Barras"
-                                value={this.state.codBarras}
-                                onChangeText={codBarras => this.setState({ codBarras })}
-                                placeholderTextColor="#B3C2F2"
-                            />
+						<View style={styles.primBlocoDir}>
 
-                        </View>
-                    </View>
-                </View>
-                <View><Text></Text></View>
-                <View style={styles.lineStyle}></View>
+							<TextInput style={styles.textNomeProduto}
+								placeholder={global.nomeProduto}
+								value={this.state.nomeProduto}
+								onChangeText={nomeProduto => this.setState({ nomeProduto })}
+								placeholderTextColor="#B3C2F2"
+							/>
 
-                <View style={styles.segBloco}>
+							<View style={styles.primBlocoSegLinha}>
 
-                    <Text style={styles.descricaoText}>Descrição</Text>
+								<TextInput style={styles.textPreco}
+									placeholder={String("R$: "+ global.preco)}
+									value={this.state.preco}
+									onChangeText={preco => this.setState({ preco })}
+									placeholderTextColor="#B3C2F2"
+								/>
 
-                    <TextInput style={styles.descricaoInput}
-                        value={this.state.descricao}
-                        onChangeText={descricao => this.setState({ descricao })}
-                        placeholderTextColor="#B3C2F2"
-                        multiline
-                    />
 
-                    <Text style={styles.descricaoText}>Tags</Text>
+								<TextInput style={styles.button}
+									placeholder={String(global.codBarras)}
+									value={this.state.codBarras}
+									onChangeText={codBarras => this.setState({ codBarras })}
+									placeholderTextColor="#B3C2F2"
+								/>
 
-                    <TextInput style={styles.tagsInput}
-                        value={this.state.tags}
-                        onChangeText={tags => this.setState({ tags })}
-                        placeholderTextColor="#B3C2F2"
-                    />
+							</View>
+						</View>
+					</View>
+					<View><Text></Text></View>
+					<View style={styles.lineStyle}></View>
 
-                </View>
+					<View style={styles.segBloco}>
 
-                <View style={styles.terBloco}>
+						<Text style={styles.descricaoText}>Descrição</Text>
 
-                    <TouchableOpacity onPress={() => this.props.navigation.goBack()} style={styles.botaoVoltar}>
-                        <Text style={styles.voltarBotaoTexto}>Cancelar</Text>
-                    </TouchableOpacity>
+						<TextInput style={styles.descricaoInput}
+							placeholder={global.descricao}
+							value={this.state.descricao}
+							onChangeText={descricao => this.setState({ descricao })}
+							placeholderTextColor="#B3C2F2"
+							multiline
+						/>
 
-                    <TouchableOpacity onPress={this.productRegister} style={styles.botaoVoltar}>
-                        <Text style={styles.voltarBotaoTexto}>Criar Item</Text>
-                    </TouchableOpacity>
+						<Text style={styles.descricaoText}>Tags</Text>
 
-                </View>
+						<TextInput style={styles.tagsInput}
+							placeholder={global.tags}
+							value={this.state.tags}
+							onChangeText={tags => this.setState({ tags })}
+							placeholderTextColor="#B3C2F2"
+						/>
 
-            </View>
-        )
-    }
+					</View>
+
+					<View style={styles.terBloco}>
+
+						<TouchableOpacity onPress={() => this.props.navigation.goBack()} style={styles.botaoVoltar}>
+							<Text style={styles.voltarBotaoTexto}>Cancelar</Text>
+						</TouchableOpacity>
+
+						<TouchableOpacity onPress={this.productEditor} style={styles.botaoVoltar}>
+							<Text style={styles.voltarBotaoTexto}>Editar Item</Text>
+						</TouchableOpacity>
+
+					</View>
+				</ScrollView>
+			</View>
+		)
+	}
 }
 
 const styles = StyleSheet.create({
 
-    container: {
-        flex: 1,
-        backgroundColor: '#B3C2F2',
-    },
+	container: {
+		flex: 1,
+		backgroundColor: '#B3C2F2',
+	},
 
-    header: {
-        fontWeight: 'bold',
-        fontSize: 20,
-        marginLeft: 5
-    },
+	header: {
+		fontWeight: 'bold',
+		fontSize: 20,
+		marginLeft: 5
+	},
 
-    segHeader: {
-        fontSize: 18,
-        marginLeft: 5,
-        marginTop: 5,
-        textDecorationLine: 'underline',
-    },
+	segHeader: {
+		fontSize: 18,
+		marginLeft: 5,
+		marginTop: 5,
+		textDecorationLine: 'underline',
+	},
 
-    lineStyle: {
-        borderWidth: 0.5,
-        borderColor: 'black',
-    },
+	lineStyle: {
+		borderWidth: 0.5,
+		borderColor: 'black',
+	},
 
-    primBloco: {
-        flexDirection: 'row',
-        marginLeft: 20,
-        marginTop: 30,
+	primBloco: {
+		flexDirection: 'row',
+		marginLeft: 20,
+		marginTop: 30,
 
-    },
+	},
 
-    primBlocoEsq: {
-        alignItems: 'center'
-    },
+	primBlocoEsq: {
+		alignItems: 'center'
+	},
 
-    primBlocoDir: {
-        flexDirection: 'column',
-        alignItems: 'flex-end',
-        marginTop: 20,
-        marginLeft: 20,
+	primBlocoDir: {
+		flexDirection: 'column',
+		alignItems: 'flex-end',
+		marginTop: 20,
+		marginLeft: 20,
 
 
-    },
+	},
 
-    foto: {
-        backgroundColor: '#29568F',
-        borderRadius: 10,
-        color: '#B3C2F2',
-        fontSize: 15,
-        width: 100,
-        height: 'auto'
-    },
+	foto: {
+		backgroundColor: '#29568F',
+		borderRadius: 10,
+		color: '#B3C2F2',
+		fontSize: 15,
+		width: 100,
+		height: 'auto'
+	},
 
-    textNomeProduto: {
+	textNomeProduto: {
 
-        backgroundColor: '#29568F',
-        fontSize: 20,
-        color: '#B3C2F2',
-        borderRadius: 10,
-        width: 250,
+		backgroundColor: '#29568F',
+		fontSize: 20,
+		color: '#B3C2F2',
+		borderRadius: 10,
+		width: 250,
 
-    },
+	},
 
-    textPreco: {
+	textPreco: {
 
-        backgroundColor: '#29568F',
-        fontSize: 20,
-        color: '#B3C2F2',
-        borderRadius: 10,
-        marginRight: 5,
-        width: 139,
-    },
+		backgroundColor: '#29568F',
+		fontSize: 20,
+		color: '#B3C2F2',
+		borderRadius: 10,
+		marginRight: 5,
+		width: 139,
+	},
 
-    button: {
-        backgroundColor: '#29568F',
-        fontSize: 20,
-        color: '#B3C2F2',
-        borderRadius: 10,
-    },
+	button: {
+		backgroundColor: '#29568F',
+		fontSize: 20,
+		color: '#B3C2F2',
+		borderRadius: 10,
+	},
 
-    segBloco: {
-        alignItems: 'center',
+	segBloco: {
+		alignItems: 'center',
 
-    },
+	},
 
-    primBlocoSegLinha: {
-        marginTop: 5,
-        flexDirection: 'row',
-    },
+	primBlocoSegLinha: {
+		marginTop: 5,
+		flexDirection: 'row',
+	},
 
-    descricaoText: {
-        fontSize: 20,
-        color: "#29568F"
-    },
+	descricaoText: {
+		fontSize: 20,
+		color: "#29568F"
+	},
 
-    descricaoInput: {
-        marginTop: 5,
-        width: Math.round(Dimensions.get('window').width) - 20,
-        backgroundColor: '#29568F',
-        borderRadius: 10,
-        height: 150,
-        color: '#B3C2F2',
-    
-    },
+	descricaoInput: {
+		marginTop: 5,
+		width: Math.round(Dimensions.get('window').width) - 20,
+		backgroundColor: '#29568F',
+		borderRadius: 10,
+		height: 150,
+		color: '#B3C2F2',
 
-    tagsInput: {
-        width: Math.round(Dimensions.get('window').width) - 20,
-        backgroundColor: '#29568F',
-        borderRadius: 10,
-        color: '#B3C2F2',
-    },
+	},
 
-    terBloco: {
-        margin: 10,
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-    },
+	tagsInput: {
+		width: Math.round(Dimensions.get('window').width) - 20,
+		backgroundColor: '#29568F',
+		borderRadius: 10,
+		color: '#B3C2F2',
+	},
 
-    botaoVoltar: {
+	terBloco: {
+		margin: 10,
+		flexDirection: 'row',
+		justifyContent: 'space-between'
+	},
 
-        marginTop: 5,
-        backgroundColor: '#29568F',
-        borderRadius: 10,
-        width: 120,
-        height: 50,
-        alignItems: 'center',
-        justifyContent: 'center'
+	botaoVoltar: {
 
-    },
+		marginTop: 5,
+		backgroundColor: '#29568F',
+		borderRadius: 10,
+		width: 120,
+		height: 50,
+		alignItems: 'center',
+		justifyContent: 'center'
 
-    voltarBotaoTexto: {
+	},
 
-        fontSize: 20,
-        color: '#B3C2F2'
-    },
+	voltarBotaoTexto: {
+
+		fontSize: 20,
+		color: '#B3C2F2'
+	},
 
 })

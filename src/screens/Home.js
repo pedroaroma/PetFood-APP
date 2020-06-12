@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image, ScrollView } from 'react-native'
 import GeneralStatusBarColor from '../components/GeneralStatusBarColor'
+import Icon5 from 'react-native-vector-icons/FontAwesome5';
+
 import api from '../services/api'
+
 
 /*
     usuario.teste2@email.com.br
@@ -10,26 +13,26 @@ import api from '../services/api'
 
 export default class Home extends Component {
 
-    state ={
+    state = {
 
         stores: [],
 
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.getStores()
     }
 
     getStores = async () => {
-        const response = await api.get('/store/all',{
+        const response = await api.get('/store/all', {
             headers: {
                 'Authorization': `Bearer ${global.Token}`,
             }
         })
         const stores = response.data
-        this.setState({stores: stores})
+        this.setState({ stores: stores })
 
-        console.debug(response.data)
+        //console.debug(response.data)
     }
 
     render() {
@@ -59,19 +62,38 @@ export default class Home extends Component {
                     </View>
 
 
-                <ScrollView>
-                    {this.state.stores.map(store => {
-                        return(
-                            <View key={store._id}>
-                                <Text>Nome da Loja: {store.nomeLoja}</Text>
-                            </View>
-                        )
-                    })}
-                </ScrollView>
 
+                    <ScrollView horizontal={true}>
+                        {this.state.stores.map(store => {
+                            return (
+                                <View key={store._id} style={styles.containerLoja}>
 
+                                    <Icon5 name="store" size={48} color="black" />
+                                    <Text style={styles.nameLoja} numberOfLines={1}>{store.nomeLoja}</Text>
+                                </View>
+                            )
+                        })}
+                    </ScrollView>
 
+                    <View>
+                        <Text style={styles.princiPetshops}>Últimos petshops visitados</Text>
+                    </View>
 
+                    <ScrollView horizontal={true}>
+                        {this.state.stores.reverse().map(store => {
+                            return (
+                                <View key={store._id} style={styles.containerLoja}>
+
+                                    <Icon5 name="store" size={48} color="black" />
+                                    <Text style={styles.nameLoja} numberOfLines={1}>{store.nomeLoja}</Text>
+                                </View>
+                            )
+                        })}
+                    </ScrollView>
+
+                    <Text style={styles.princiPetshops}>Promoções</Text>
+                    <View style={styles.promos}>
+                    </View>
                 </View>
             </View>
         )
@@ -84,13 +106,13 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#B3C2F2',
     },
-    header:{
+    header: {
         marginTop: 11,
     },
 
-    headerTitle:{
+    headerTitle: {
         fontSize: 26,
-        
+
     },
 
     endEntrega: {
@@ -103,13 +125,35 @@ const styles = StyleSheet.create({
         marginBottom: 6,
         marginHorizontal: -10,
     },
-    
+
     princiPetshops: {
         fontWeight: 'bold',
         margin: 10,
     },
 
+    containerLoja: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 200,
+        height: 100,
+        marginBottom: 5,
+        borderWidth: 1,
+        marginHorizontal: 5,
+    },
+
+    nameLoja: {
+        marginHorizontal: 5
+    },
+
     modal: {
         margin: 10,
+    },
+
+    promos: {
+        flexDirection: 'row'
+    },
+
+    promfotos: {
+        right: 'contain'
     },
 })
