@@ -48,8 +48,9 @@ export default class Register extends Component {
                 this.props.navigation.navigate('Login')
             })
             .catch(function (error) {
+                alert("Ops, algo deu errado")
                 console.debug(error.response)
-                alert(error.response)
+                //alert(error.response)
             })
     }
 
@@ -58,17 +59,18 @@ export default class Register extends Component {
             .then(response => {
                 console.debug(response.data)
 
-                this.setState({rua: response.data.logradouro})
-                this.setState({estado: response.data.uf})
-                this.setState({cidade: response.data.localidade})
-                this.setState({bairro: response.data.bairro})
+                this.setState({ rua: response.data.logradouro })
+                this.setState({ estado: response.data.uf })
+                this.setState({ cidade: response.data.localidade })
+                this.setState({ bairro: response.data.bairro })
 
                 console.debug(this.state.rua + '/' + this.state.estado + '/' + this.state.cidade + '/' + this.state.bairro)
 
             })
-            .catch(function (error){
+            .catch(function (error) {
+                alert("Verifique se seu CEP está correto")
                 console.debug(error.response)
-                alert(error.response)
+                //alert(error.response)
             })
     }
 
@@ -83,65 +85,65 @@ export default class Register extends Component {
                         source={require('../images/logo.png')} />
                     <Text style={styles.headerText}>CADASTRO</Text>
                 </View>
+                <ScrollView>
+                    <View style={styles.formCell}>
 
-                <View style={styles.formCell}>
+                        <Text style={styles.formText}>Nome completo</Text>
+                        <TextInput style={styles.input}
+                            autoFocus={false} value={this.state.nome}
+                            onChangeText={name => this.setState({ name })} />
 
-                    <Text style={styles.formText}>Nome completo</Text>
-                    <TextInput style={styles.input}
-                        autoFocus={false} value={this.state.nome}
-                        onChangeText={name => this.setState({ name })} />
+                        <Text style={styles.formText}>Email</Text>
+                        <TextInput style={styles.input}
+                            keyboardType='email-address' value={this.state.email}
+                            onChangeText={email => this.setState({ email })} />
 
-                    <Text style={styles.formText}>Email</Text>
-                    <TextInput style={styles.input}
-                        keyboardType='email-address' value={this.state.email}
-                        onChangeText={email => this.setState({ email })} />
+                        <Text style={styles.formText}>Senha</Text>
+                        <TextInput style={styles.input}
+                            value={this.state.password}
+                            secureTextEntry={true}
+                            onChangeText={password => this.setState({ password })} />
 
-                    <Text style={styles.formText}>Senha</Text>
-                    <TextInput style={styles.input}
-                        value={this.state.password}
-                        secureTextEntry={true}
-                        onChangeText={password => this.setState({ password })} />
-
-                    {/*<TextInput placeholder='CPF' style={styles.input2}
+                        {/*<TextInput placeholder='CPF' style={styles.input2}
                         value={this.state.cpf}
                         onChangeText={cpf => this.setState({ cpf })} />*/}
 
-                    <Text style={styles.formText}>CEP</Text>
-                    <TextInput style={styles.input}
-                        maxLength={8}
-                        value={this.state.cep}
-                        onBlur={this.validaCep}
-                        onChangeText={cep => this.setState({ cep })} />
+                        <Text style={styles.formText}>CEP</Text>
+                        <TextInput style={styles.input}
+                            maxLength={8}
+                            value={this.state.cep}
+                            onBlur={this.validaCep}
+                            onChangeText={cep => this.setState({ cep })} />
 
-                    <Text style={styles.formText}>Endereço</Text>
-                    <TextInput style={styles.input}
-                        editable={false}
-                        value={this.state.rua}
-                        onChangeText={rua => this.setState({ rua })} />
+                        <Text style={styles.formText}>Endereço</Text>
+                        <TextInput style={styles.input}
+                            editable={false}
+                            value={this.state.rua}
+                            onChangeText={rua => this.setState({ rua })} />
 
-                    <View style={styles.numComplemento}>
-                        <Text style={styles.formText}>Número</Text>
-                        <View>
-                            <Text style={styles.formTextComp}>Complemento</Text>
+                        <View style={styles.numComplemento}>
+                            <Text style={styles.formText}>Número</Text>
+                            <View>
+                                <Text style={styles.formTextComp}>Complemento</Text>
+                            </View>
                         </View>
+
+                        <View style={styles.formCellNumComp}>
+                            <TextInput style={styles.inputNum}
+                                value={this.state.numero}
+                                onChangeText={numero => this.setState({ numero })} />
+
+                            <TextInput style={styles.inputComp}
+                                value={this.state.complemento}
+                                onChangeText={complemento => this.setState({ complemento })} />
+                        </View>
+
+                        <Text style={styles.formText}>Telefone</Text>
+                        <TextInput style={styles.input}
+                            value={this.state.telefone}
+                            onChangeText={telefone => this.setState({ telefone })} />
                     </View>
-
-                    <View style={styles.formCellNumComp}>
-                        <TextInput style={styles.inputNum}
-                            value={this.state.numero}
-                            onChangeText={numero => this.setState({ numero })} />
-
-                        <TextInput style={styles.inputComp}
-                            value={this.state.complemento}
-                            onChangeText={complemento => this.setState({ complemento })} />
-                    </View>
-
-                    <Text style={styles.formText}>Telefone</Text>
-                    <TextInput style={styles.input}
-                        value={this.state.telefone}
-                        onChangeText={telefone => this.setState({ telefone })} />
-                </View>
-                {/*<TextInput placeholder='Estado' style={styles.input2}
+                    {/*<TextInput placeholder='Estado' style={styles.input2}
                         value={this.state.estado}
                         onChangeText={estado => this.setState({ estado })} />
 
@@ -152,23 +154,25 @@ export default class Register extends Component {
                     <TextInput placeholder='Bairro' style={styles.input2}
                         value={this.state.bairro}
                         onChangeText={bairro => this.setState({ bairro })} />*/}
-                {/*<TextInput placeholder='Data de Nascimento' style={styles.input2}
+                    {/*<TextInput placeholder='Data de Nascimento' style={styles.input2}
                         value={this.state.dataNascimento}
                         onChangeText={dataNascimento => this.setState({ dataNascimento })} />*/}
 
 
-                <View style={styles.footer}>
+                    <View style={styles.footer}>
 
-                    <TouchableOpacity onPress={() => this.props.navigation.goBack()} style={styles.voltarBtn}>
-                        <Icon5 name="arrow-left" size={48} color="#29568F" />
-                    </TouchableOpacity>
+                        <TouchableOpacity onPress={() => this.props.navigation.goBack()} style={styles.voltarBtn}>
+                            <Icon5 name="arrow-left" size={48} color="#29568F" />
+                        </TouchableOpacity>
 
-                    <TouchableOpacity onPress={this.register} style={styles.cadastrarBtn}>
-                        <Text style={styles.cadastrarBtnText}>Criar Usuário</Text>
-                    </TouchableOpacity>
+                        <TouchableOpacity onPress={this.register} style={styles.cadastrarBtn}>
+                            <Text style={styles.cadastrarBtnText}>Criar Usuário</Text>
+                        </TouchableOpacity>
 
-                </View>
+                    </View>
+                </ScrollView>
             </View>
+
         )
     };
 }

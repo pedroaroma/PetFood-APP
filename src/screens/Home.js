@@ -66,11 +66,20 @@ export default class Home extends Component {
                     <ScrollView horizontal={true}>
                         {this.state.stores.map(store => {
                             return (
-                                <View key={store._id} style={styles.containerLoja}>
+                                <TouchableOpacity key={store._id} onPress={ () => {
+                                    this.props.navigation.navigate('StoreHomePage')
+                                    global.idLoja = store._id
+                                    global.nomeLoja = store.nomeLoja
+                                    global.enderecoLoja = store.endereco
+                                    global.numLoja = store.numero
 
-                                    <Icon5 name="store" size={48} color="black" />
-                                    <Text style={styles.nameLoja} numberOfLines={1}>{store.nomeLoja}</Text>
-                                </View>
+                                }}>
+                                    <View style={styles.containerLoja}>
+
+                                        <Icon5 name="store" size={48} color="black" />
+                                        <Text style={styles.nameLoja} numberOfLines={1}>{store.nomeLoja}</Text>
+                                    </View>
+                                </TouchableOpacity>
                             )
                         })}
                     </ScrollView>

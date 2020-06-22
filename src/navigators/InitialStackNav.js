@@ -26,15 +26,17 @@ import ProductUpload from '../screens/store/ProductUpload'
 import MyProducts from '../screens/store/MyProducts'
 import MySales from '../screens/store/MySales';
 import ProductEdit from '../screens/store/ProductEdit'
+import EditStoreInfo from '../screens/store/EditStoreInfo'
+import StoreHomePage from '../screens/store/StoreHomePage'
 
 const Stack = createStackNavigator()
 
 function MyStack() {
-	return(
+	return (
 		<Stack.Navigator
-		screenOptions={{
-			headerShown: false
-		  }}
+			screenOptions={{
+				headerShown: false
+			}}
 		>
 
 			<Stack.Screen
@@ -46,7 +48,7 @@ function MyStack() {
 				name="Register"
 				component={Register}
 			/>
-			
+
 			<Stack.Screen
 				name="Home"
 				component={HomeTabNav}
@@ -86,7 +88,7 @@ function MyStack() {
 				name="Payments"
 				component={Payments}
 			/>
-			
+
 			<Stack.Screen
 				name="Addresses"
 				component={Addresses}
@@ -115,25 +117,35 @@ function MyStack() {
 			<Stack.Screen
 				name="MySales"
 				component={MySales}
-			/> 
+			/>
 
 			<Stack.Screen
 				name="ProductEdit"
 				component={ProductEdit}
-			/>  
+			/>
+
+			<Stack.Screen
+				name="EditStoreInfo"
+				component={EditStoreInfo}
+			/>
+
+			<Stack.Screen
+				name="StoreHomePage"
+				component={StoreHomePage}
+			/>
 
 		</Stack.Navigator>
 	)
 }
 
 export default class InitialStackNav extends Component {
-	
-	componentDidMount() { 
-        SplashScreen.hide();
-    }
-	
-	render(){
-		return(
+
+	componentDidMount() {
+		SplashScreen.hide();
+	}
+
+	render() {
+		return (
 			<NavigationContainer>
 				<MyStack />
 			</NavigationContainer>

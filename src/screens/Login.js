@@ -5,27 +5,47 @@ import api from '../services/api'
 
 import GeneralStatusBarColor from '../components/GeneralStatusBarColor'
 
+
+/*
+usuario.teste2@email.com.br
+123456789
+*/
+
 export default class Login extends Component {
 
 	constructor(){
 		super();
-
+		
 		global.Token = '',
 		global.nomeUsuario = '',
 		global.idLoja = '',
 		global.endEntrega = '',
 		global.isPartner = false,
+		global.nomeLoja = '',
+		global.enderecoLoja = '',
+		global.numLoja = '',
 
-		
+		//variaves globais para manipulação de produto (edição e remoção)
 		global.nomeProduto = '',
 		global.preco = '',
 		global.codBarras = '',
 		global.descricao = '',
 		global.tags = '',
 		global.itemId = ''
-		
 
-
+		//variaveis para edição de usuario
+		global.userId = '',
+		global.userEmail = '',
+		global.userCpf = '',
+		global.userTel = '',
+		global.userEstado = '',
+		global.userCidade = '',
+		global.userBairro = '',
+		global.userRua = '',
+		global.userNum = '',
+		global.userComp = '',
+		global.userCep = '',
+		global.userDataNascimento = ''
 	}
 
 	state = {
@@ -42,13 +62,31 @@ export default class Login extends Component {
 			.then( response => {
 				global.Token = response.data.token
 				global.nomeUsuario = response.data.clientData.nome
+				
+				//variaveis de acesso as infos do usuario
+				global.userId = response.data.clientData._id
+				global.userEmail = response.data.clientData.email,
+				global.userCpf = response.data.clientData.cpf,
+				global.userTel = response.data.clientData.telefone,
+				global.userEstado = response.data.clientData.estado,
+				global.userCidade = response.data.clientData.cidade,
+				global.userBairro = response.data.clientData.bairro,
+				global.userRua = response.data.clientData.rua,
+				global.userNumEnd = response.data.clientData.numero,
+				global.userComplemento = response.data.clientData.complemento,
+				global.userCep = response.data.clientData.cep,
+				global.userDataNascimento = response.data.clientData.dataNascimento
+				global.endEntrega = (response.data.clientData.rua + ', '+ response.data.clientData.numero)
+				console.log(response.data)
 				if(response.data.clientData.tipo === "loja"){
 					global.isPartner = true
 					global.idLoja = response.data.clientData.loja
-					global.endEntrega = (response.data.clientData.rua + ', '+ response.data.clientData.numero)
+					//global.endEntrega = (response.data.clientData.rua + ', '+ response.data.clientData.numero)
 				}
 				//console.debug(response.data.clientData.tipo)
 				alert("Login Bem Sucedido")
+
+
 
 				this.props.navigation.navigate('Home')
 				this.setState({email: ''})

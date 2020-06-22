@@ -38,6 +38,14 @@ export default class AdminStore extends Component {
                                 <Text style={styles.nomesBotoes}>Minhas vendas efetuadas</Text>
                             </TouchableOpacity>
                         </View>
+
+                        <View style={styles.addProduto}>
+                            <TouchableOpacity onPress={() => this.props.navigation.navigate('EditStoreInfo')}>
+                                <Icon5 name="store-alt" size={100} color="#91A8A4" style={styles.allignIcon} />
+                                <Text style={styles.nomesBotoesEdit}>Editar Informações da loja</Text>
+                            </TouchableOpacity>
+                        </View>
+                        
                     </View>
 
                     <TouchableOpacity onPress={() => this.props.navigation.goBack()} style={styles.voltarbotao}>
@@ -107,7 +115,7 @@ const styles = StyleSheet.create({
     segLinha: {
         marginTop: 20,
         flexDirection: 'row',
-        justifyContent: 'center'
+        justifyContent: 'space-around'
     },
     voltarbotao:{
         alignItems: 'center',
@@ -118,5 +126,12 @@ const styles = StyleSheet.create({
         borderRadius: 360,
         width: 80,
         height: 80,
+    },
+    nomesBotoesEdit: {
+        marginTop: 28,
+        fontSize: 14,
+        color: '#2D2327',
+        fontWeight: 'bold',
+        textAlign: 'center'
     }
 })
