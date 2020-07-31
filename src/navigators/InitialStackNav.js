@@ -29,6 +29,24 @@ import ProductEdit from '../screens/store/ProductEdit'
 import EditStoreInfo from '../screens/store/EditStoreInfo'
 import StoreHomePage from '../screens/store/StoreHomePage'
 
+
+//Compra a e venda imports
+
+import BuyProduct from '../screens/store/BuyProduct'
+import Mysale from '../screens/store/MySale'
+import MySale from '../screens/store/MySale'
+import MySaleDone from '../screens/store/MySaleDone'
+
+import IncomingOrders from '../screens/IncomingOrders'
+import OrdersDone from '../screens/OrdersDone'
+
+
+import SearchSellsClient from '../screens/profile/SearchSellsClient'
+import SearchProducts from '../screens/store/SearchProducts'
+import SearchProductFiltred from '../screens/SearchProductFiltred'
+
+import SalesGraph from '../screens/store/SalesGraph'
+
 const Stack = createStackNavigator()
 
 function MyStack() {
@@ -132,6 +150,52 @@ function MyStack() {
 			<Stack.Screen
 				name="StoreHomePage"
 				component={StoreHomePage}
+			/>
+
+			<Stack.Screen
+				name="BuyProduct"
+				component={BuyProduct}
+			/>
+
+			<Stack.Screen
+				name="MySale"
+				component={MySale}
+			/>
+			<Stack.Screen
+				name="MySaleDone"
+				component={MySaleDone}
+			/>
+
+			<Stack.Screen
+				name="IncomingOrders"
+				component={IncomingOrders}
+			/>
+
+			<Stack.Screen
+				name="OrdersDone"
+				component={OrdersDone}
+			/>
+
+			<Stack.Screen
+				name="SearchSellsClient"
+				component={SearchSellsClient}
+			/>
+
+			<Stack.Screen
+				name="SearchProducts"
+				component={SearchProducts}
+			/>
+
+			<Stack.Screen
+				name="SalesGraph"
+				component={SalesGraph}
+			/>
+
+
+
+			<Stack.Screen
+				name="SearchProductFiltred"
+				component={SearchProductFiltred}
 			/>
 
 		</Stack.Navigator>

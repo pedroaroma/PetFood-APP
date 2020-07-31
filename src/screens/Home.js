@@ -41,12 +41,6 @@ export default class Home extends Component {
                 <View style={styles.modal}>
 
                     <GeneralStatusBarColor backgrondColor="#B3C2F2" barStyle="light-content" />
-                    {/*<Text>Tela apenas para Debug</Text>
-                    <Text>{global.isPartner ? 'Tipo de Login: Loja' : 'cliente'}</Text>
-                    <Text>{'Token do usuário: ' + (global.Token == '' ? 'Modo offline = sem token' : global.Token)}</Text>
-                    <Text>{'ID da Loja: ' + global.idLoja}</Text>
-                    <Text> TODO: 1 - LISTAR LOJAS DISPONIVEIS</Text>
-                    <Text>2 - Editar o produto</Text>*/}
 
                     <View style={styles.header}>
                         <Text style={styles.headerTitle}>Entrega</Text>
@@ -85,17 +79,26 @@ export default class Home extends Component {
                     </ScrollView>
 
                     <View>
-                        <Text style={styles.princiPetshops}>Últimos petshops visitados</Text>
+                        <Text style={styles.princiPetshops}>Últimos petshops cadastrados</Text>
                     </View>
 
                     <ScrollView horizontal={true}>
                         {this.state.stores.reverse().map(store => {
                             return (
-                                <View key={store._id} style={styles.containerLoja}>
+                                <TouchableOpacity key={store._id} onPress={ () => {
+                                    this.props.navigation.navigate('StoreHomePage')
+                                    global.idLoja = store._id
+                                    global.nomeLoja = store.nomeLoja
+                                    global.enderecoLoja = store.endereco
+                                    global.numLoja = store.numero
 
-                                    <Icon5 name="store" size={48} color="black" />
-                                    <Text style={styles.nameLoja} numberOfLines={1}>{store.nomeLoja}</Text>
-                                </View>
+                                }}>
+                                    <View style={styles.containerLoja}>
+
+                                        <Icon5 name="store" size={48} color="black" />
+                                        <Text style={styles.nameLoja} numberOfLines={1}>{store.nomeLoja}</Text>
+                                    </View>
+                                </TouchableOpacity>
                             )
                         })}
                     </ScrollView>

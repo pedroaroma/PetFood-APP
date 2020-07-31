@@ -6,7 +6,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import RNRestart from 'react-native-restart'
 
 import api from '../../services/api'
-
+import apiCep from '../../services/apiCep'
 
 export default class Partners extends Component {
 
@@ -51,6 +51,22 @@ export default class Partners extends Component {
 
 
 	}
+
+	validaCep = () => {
+        apiCep.get(`${this.state.cep}/json/`)
+            .then(response => {
+                console.debug(response.data)
+
+                this.setState({ endereco: response.data.logradouro })
+                
+            })
+            .catch(function (error) {
+                alert("Verifique se seu CEP está correto")
+                console.debug(error.response)
+                //alert(error.response)
+            })
+	}
+	
 
 	render() {
 		return (
@@ -106,8 +122,10 @@ export default class Partners extends Component {
 							<TextInput style={styles.input}
 								placeholder="qual é o CEP do estabelecimento?"
 								value={this.state.cep}
+								onBlur={this.validaCep}
 								onChangeText={cep => this.setState({ cep })}
 								placeholderTextColor="#fff"
+							
 							/>
 						</View>
 						<View>
@@ -117,6 +135,7 @@ export default class Partners extends Component {
 								value={this.state.endereco}
 								onChangeText={endereco => this.setState({ endereco })}
 								placeholderTextColor="#fff"
+								editable={false}
 							/>
 						</View>
 						<View style={styles.NumComp}>
@@ -132,7 +151,7 @@ export default class Partners extends Component {
 							<View>
 								<Text style={styles.inputText}>Complemento</Text>
 								<TextInput style={styles.input}
-									placeholder="Ex: Casa 1, apto 22, bloco 2              "
+									placeholder="Ex: primeiro andar, bloco 2                "
 									value={this.state.complemento}
 									onChangeText={complemento => this.setState({ complemento })}
 									placeholderTextColor="#fff"

@@ -46,6 +46,49 @@ export default class Login extends Component {
 		global.userComp = '',
 		global.userCep = '',
 		global.userDataNascimento = ''
+
+		//variavel para compra de item
+
+		global.carrinho = {
+			nomeProduto: '',
+			preco: '',
+			codBarras: '',
+			descricao: '',
+			tags: '',
+			//o que vai para a api...
+			produtoId: '',
+			lojaId: '',
+			preco: ''	
+		}
+		global.venda = {
+			vendaId: '',
+			finalizado: '',
+			produtoId: '',
+
+		}
+		global.compra = {
+			compraId: '',
+			finalizado: '',
+			produtoId: '',
+		}
+
+		global.listaCompras = [],
+		global.searchCompraComprador = ''
+		global.searchVendedor = '',
+
+		global.listaVendas = [],
+		global.AllProducts = [],
+		global.pesqproductfiltrado = ''
+
+		// global.EditStore = {
+		// 	nomeLoja: '',
+		// 	cnpj: '',
+		// 	telComercial: '',
+		// 	cep: '',
+		// 	endereco: '',
+		// 	numero: '',
+		// 	complemento: '',	
+		// }
 	}
 
 	state = {
@@ -64,7 +107,8 @@ export default class Login extends Component {
 				global.nomeUsuario = response.data.clientData.nome
 				
 				//variaveis de acesso as infos do usuario
-				global.userId = response.data.clientData._id
+				global.userComp = response.data.clientData.complemento,
+				global.userId = response.data.clientData._id,
 				global.userEmail = response.data.clientData.email,
 				global.userCpf = response.data.clientData.cpf,
 				global.userTel = response.data.clientData.telefone,

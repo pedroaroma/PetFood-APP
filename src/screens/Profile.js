@@ -17,6 +17,13 @@ export default class Profile extends Component{
                     <Icon5 name='user-circle' size={30} color='black' />
                     <Text style={styles.tamFonteNome}>{global.nomeUsuario}</Text>
                 </View>
+
+                <View style={{marginLeft: 10}}>
+        <Text>Endereço: {global.userRua}, {global.userNum} - {global.userComp}</Text>
+                <Text>CEP: {global.userCep}</Text>
+                <Text>Tel: {global.userTel}</Text>
+
+                </View>
     
             <View style = {styles.Buttons}>
                 

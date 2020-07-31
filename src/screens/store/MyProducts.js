@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, Dimensions, TextInput } from 'react-native'
 import GeneralStatusBarColor from '../../components/GeneralStatusBarColor'
 import api from '../../services/api'
 import { ScrollView } from 'react-native-gesture-handler'
@@ -10,6 +10,7 @@ export default class MyProducts extends Component {
     state = {
 
         products: [],
+        pesquisa: '',
 
 
     }
@@ -28,11 +29,12 @@ export default class MyProducts extends Component {
             headers: {
                 'Authorization': `Bearer ${global.Token}`,
             }
+        }).then(response => {
+            this.setState({ products: response.data })
+            global.listaVendas = response.data
+        }).catch(function(error){
+            console.log(error)
         })
-
-        const produtos = response.data
-        this.setState({ products: produtos })
-
     }
 
     render() {
@@ -40,6 +42,28 @@ export default class MyProducts extends Component {
             <View style={styles.container}>
 
                 <GeneralStatusBarColor backgrondColor="#B3C2F2" barStyle="light-content" />
+                
+                <View style={{flexDirection: 'row'}}>
+                    <View style={styles.pesquisa}>
+                        <TextInput
+                            value={this.state.pesquisa}
+                            onChangeText={pesquisa => { this.setState({ pesquisa }) }}
+                            placeholder="Pesquisar"
+                        />
+                    </View>
+
+                    <View>
+                        <TouchableOpacity style={styles.icon} onPress={()=> {
+                            this.props.navigation.navigate('SearchProducts')
+                            global.searchVendedor = this.state.pesquisa
+
+
+                        }}>
+                            <Icon5 name="search" size={28} color="#29568F" />
+                        </TouchableOpacity>
+                    </View>
+                </View>
+
 
                 <View style={styles.header}>
                     <Text style={styles.headerText}>Meus produtos</Text>
@@ -50,7 +74,8 @@ export default class MyProducts extends Component {
 
 
                 <ScrollView>
-                    {this.state.products.map(product => {
+                    {
+                    this.state.products.map(product => {
                         return (
 
                             <View key={product._id} style={styles.produto}>
@@ -129,5 +154,18 @@ const styles = StyleSheet.create({
         borderRadius: 360,
         width: 80,
         height: 80,
+    },
+    pesquisa: {
+        backgroundColor: '#F0F7EE',
+        width: 350,
+        height: 40,
+        borderRadius: 10,
+        marginLeft: 10,
+        marginTop: 5,
+        position: 'relative'
+    },
+    icon: {
+        marginTop: 10,
+        marginLeft: 10
     }
 })
